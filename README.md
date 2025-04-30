@@ -60,7 +60,7 @@ IMG_SIZE = 256  # image height and width
   🔗 [Cloud Masking Test Set - Satellite CMP25 Course](https://www.kaggle.com/datasets/nouranhany10/cloud-masking-test-set-satellite-cmp25-course)
 
 - Attach the pre-trained model (CustomUNet):  
-  🔗 [CustomUNet - Gousha Model](https://www.kaggle.com/models/goushaa/customunet)
+  🔗 [CustomUNet -Our Model](https://www.kaggle.com/models/goushaa/customunet)
 
 > 📌 **Transparency Notice**:  
 > The model was created before the submission deadline for full reproducibility and fairness.
