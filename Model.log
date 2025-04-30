@@ -1,0 +1,42 @@
+Total params: 31,379,521 (119.70 MB)
+Trainable params: 31,379,521 (119.70 MB)
+Non-trainable params: 0 (0.00 B)
+=========================Options=============================
+-max_depth                  10000
+-min_bytes                  0
+-min_peak_bytes             0
+-min_residual_bytes         0
+-min_output_bytes           0
+-min_micros                 0
+-min_accelerator_micros     0
+-min_cpu_micros             0
+-min_params                 0
+-min_float_ops              1
+-min_occurrence             0
+-step                       -1
+-order_by                   float_ops
+-account_type_regexes       .*
+-start_name_regexes         .*
+-trim_name_regexes          
+-show_name_regexes          .*
+-hide_name_regexes          
+-account_displayed_op_only  true
+-select                     float_ops
+-output                     stdout:
+
+==================Model Analysis Report======================
+
+Doc:
+op: The nodes are operation kernel type, such as MatMul, Conv2D. Graph nodes belonging to the same type are aggregated together.
+flops: Number of float operations. Note: Please read the implementation for thFLOPs: 111.483 G
+e math behind it.
+
+Profile:
+node name | # float_ops
+Conv2D                   111.44b float_ops (100.00%, 99.96%)
+BiasAdd                  31.98m float_ops (0.04%, 0.03%)
+MaxPool                  7.86m float_ops (0.01%, 0.01%)
+AddV2                    65.54k float_ops (0.00%, 0.00%)
+Mul                          8 float_ops (0.00%, 0.00%)
+
+======================End of Report==========================
