@@ -30,13 +30,30 @@ Follow these steps to run `run_inference.py` using Kaggle with TPU enabled:
 
 - Go to [Kaggle Notebooks](https://www.kaggle.com/code)
 - Click **"New Notebook"**
-- Set **Accelerator** to **TPU** under the "Notebook Settings"
+- Set **Accelerator** to **TPU OR GPU P100** if TPU is overloaded under the "Notebook Settings"
 
 ### 2. Add Files
 
 - Add the inference script file `evaluation_function.py` in the first cell
-- In a second cell, add the `run_inference.py`  file
+- In a second cell, add the `run_inference.py`  file don't forget to remove ```from evalution_function import rle_encode, rle_decode, dice_coefficient``` line
+- You could add this code in a seperate cell for more stable kaggle enviornment
+```python
+try:
+    tpu = tf.distribute.cluster_resolver.TPUClusterResolver(tpu='local')
+    tf.config.experimental_connect_to_cluster(tpu)
+    tf.tpu.experimental.initialize_tpu_system(tpu)
+    strategy = tf.distribute.TPUStrategy(tpu)
+    print("Running on TPU")
+except Exception as e:
+    strategy = tf.distribute.get_strategy()
+    print(e)
+    print("Running on CPU/GPU")
+    
+BATCH_SIZE = 8 * strategy.num_replicas_in_sync  # adjust batch size as needed
+IMG_SIZE = 256  # image height and width
 
+```
+# Initialize TPU if present You could also use GPU 100 it will be good for inference 
 ### 3. Attach Required Datasets and Model
 
 - Attach the test dataset (TA Dataset):  
